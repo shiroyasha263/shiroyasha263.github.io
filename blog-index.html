@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Blog - Home</title>
+    <title>Blogs - Home</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -12,7 +12,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f8e5d0;
+            background-color: #ffffff;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         body.dark-mode {
@@ -51,7 +51,7 @@
             color: #2c3e50;
             font-size: 1.5rem;
             margin-top: 0;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0rem;
         }
         p {
             margin: 0;
@@ -96,20 +96,44 @@
         .dark-mode #theme-toggle::before {
             content: '🌙';
         }
+        .date {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .dark-mode .date {
+            color: #bdc3c7;
+        }
+        .tag {
+            display: inline;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #2c3e50;
+            padding: 0.2rem 0.5rem;
+            margin: 0.2rem;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark-mode .tag {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: #ecf0f1;
+        }
     </style>
 </head>
 <body>
     <button id="theme-toggle" aria-label="Toggle dark mode"></button>
     <header>
-        <h1>Elegant Blog</h1>
+        <h1>Blogs</h1>
     </header>
     <main>
         <article class="blog-preview">
-            <img src="/api/placeholder/150/100" alt="Minimalist design example">
             <div class="blog-preview-content">
-                <h2>The Art of Minimalism in Design</h2>
-                <p>Explore the principles of minimalism and how they can be applied to create stunning, functional designs that speak volumes through simplicity.</p>
-                <a href="#" class="read-more">Read more...</a>
+                <h2>Hygiene</h2>
+                <div class="date">September 8, 2024</div>
+                <div>
+                    <span class="tag">Health-Exercise</span>
+                </div>
+                <p>Just a quick read on cleanliness one needs to follow</p>
+                <a href="blog-hygiene.html" class="read-more">Read more...</a>
             </div>
         </article>
         <article class="blog-preview">
@@ -117,14 +141,6 @@
             <div class="blog-preview-content">
                 <h2>Understanding Color Theory in Web Design</h2>
                 <p>Dive into the world of color theory and learn how to create harmonious color schemes that enhance user experience and convey the right message.</p>
-                <a href="#" class="read-more">Read more...</a>
-            </div>
-        </article>
-        <article class="blog-preview">
-            <img src="/api/placeholder/150/100" alt="Typography samples">
-            <div class="blog-preview-content">
-                <h2>The Power of Typography in User Interface Design</h2>
-                <p>Discover how different typefaces and font pairings can dramatically impact the readability and overall aesthetic of your digital projects.</p>
                 <a href="#" class="read-more">Read more...</a>
             </div>
         </article>
