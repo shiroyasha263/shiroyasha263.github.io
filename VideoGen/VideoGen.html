@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Title — Minimal Research Page</title>
+  <meta name="description" content="A super-minimal, responsive academic project page with dark/light mode toggle." />
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --text: #e6e7eb;
+      --muted: #a3a7b3;
+      --link: #8bb2ff;
+      --maxw: 860px;
+      --gap: 18px;
+    }
+    [data-theme="light"]{
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #5b6273;
+      --link: #1f4de8;
+    }
+
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 24px 16px 64px; }
+
+    h1{ font-size: clamp(28px, 4vw, 40px); line-height: 1.2; margin: 8px 0 6px; font-weight: 750; }
+    h2{ font-size: clamp(18px, 2.6vw, 22px); margin: 32px 0 8px; font-weight: 650; }
+    .subtitle{ color: var(--muted); }
+
+    .authors{ display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 12px 0; }
+    .author{ padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(127,127,127,.25); background: transparent; }
+    .affil{ color: var(--muted); font-size: 14px; }
+
+    .grid{ display: grid; gap: var(--gap); }
+    .grid.cols-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid.cols-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    @media (max-width: 800px){ .grid.cols-2, .grid.cols-3{ grid-template-columns: 1fr; } }
+
+    .media{overflow: hidden; position: relative; }
+    .media img, .media video{ width: 100%; height: auto; display: block; }
+    .tag{ position: absolute; inset: 10px auto auto 10px; padding: 4px 8px; font-size: 12px; border-radius: 999px; background: rgba(0,0,0,.35); color: #fff; }
+
+    .compare{ display:grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0,1fr)); }
+    @media (max-width: 780px){ .compare{ grid-template-columns: 1fr; } }
+
+    .btn{ appearance: none; border: 1px solid rgba(127,127,127,.35); background: transparent; color: inherit; padding: 8px 12px; border-radius: 10px; cursor: pointer; }
+    .btn:hover{ background: rgba(127,127,127,.08); }
+
+    footer{ color: var(--muted); text-align: center; padding: 24px 0 40px; font-size: 13px; }
+
+    /* Floating theme toggle */
+    .theme-toggle{
+      position: fixed; right: 14px; bottom: 14px; z-index: 40;
+      width: 42px; height: 42px; border-radius: 999px;
+      border: 1px solid rgba(127,127,127,.35); background: transparent; color: inherit;
+      cursor: pointer; font-size: 18px; line-height: 42px; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="subtitle">Project Page</div>
+      <h1>Noise Manipulation for Video Generation</h1>
+      <p class="subtitle">This is a project trying to utilize noise space manipulation to generate coherent videos.</p>
+
+      <div class="authors">
+        <span><a href="../main.html">Vishesh Gupta</a></span>
+        <span><a href="https://www.jentevandersanden.com/">Jente Vandersanden</a></span>
+        <span><a href="https://people.mpi-inf.mpg.de/~gsingh/">Gurprit Singh</a></span>
+        <span><a href="https://people.mpi-inf.mpg.de/~hpseidel/">Hans-Peter Seidel</a></span>
+        <span> • MPI-Informatiks • 2025</span>
+      </div>
+    </section>
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>We explore noise-space manipulation in generative modelling, venturing into multiple use cases - compositional generation, accelerated sampling, and noise guidance. We then use it as a light weight alternative for video diffusion, enabling temporally coherent generation via frozen image models.</p>
+    </section>
+
+    <section id="links">
+      <h2><a href="./Results/Report_MPI-1.pdf">Report</a></h2>
+    </section>
+
+    <section id="method">
+      <h2>Method Overview</h2>
+      <div class="grid cols-2">
+        <div>
+          <ol>
+            <li>Observing the noise space of a frozen image model, frames from a video lie close to each other, hinting at some form of manifold.</li>
+            <li>We want to add noise to a single sample, such that the corrupted sample is temporally correlated to the initial sample at an attempt to learn this manifold.</li>
+          </ol>
+        </div>
+        <div class="media">
+          <span class="tag">Training</span>
+          <img src="./Results/finaltrain.png" alt="Method diagram" />
+        </div>
+        <div class="media">
+          <span class="tag">Inference</span>
+          <img src="./Results/updatedgoal.png" alt="Method diagram" />
+        </div>
+        <div class="media">
+          <span class="tag">Preserve your own correlation</span>
+          <img src="./Results/pyoco.png" alt="Method diagram" />
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results</h2>
+      <div class="compare">
+        <div class="media">
+          <video src="./Results/sample-10-7-5-3---4.mp4" autoplay loop muted controls playsinline></video>
+        </div>
+        <div class="media">
+          <video src="./Results/sample-10-7-5-3---6.mp4" autoplay  loop muted controls playsinline></video>
+        </div>
+        <div class="media">
+          <video src="./Results/sample-10-7-5-3---9.mp4" autoplay  loop muted controls playsinline></video>
+        </div>
+        <div class="media">
+          <video src="./Results/sample-5-4-3-2---3.mp4" autoplay  loop muted controls playsinline></video>
+        </div>
+        <div class="media">
+          <video src="./Results/sample-5-4-3-2---9.mp4" autoplay  loop muted controls playsinline></video>
+        </div>
+        <div class="media">
+          <video src="./Results/sample-8-6-4-2---5.mp4" autoplay  loop muted controls playsinline></video>
+        </div>  
+      </div>
+    </section>
+
+    <section id="bibtex">
+      <h2>BibTeX</h2>
+      <pre><code id="bib">@misc{guptaNoiseVideoGen,
+  title={Noise Manipulation for Video Generation},
+  author={Vishesh Gupta, Jente Vandersanden, Gurprit Singh, Hans-Peter Seidel},
+  year={2025},
+  url={https://your-project-site.example}
+}</code></pre>
+      <button class="btn" onclick="copyBib()">Copy BibTeX</button>
+    </section>
+
+  <!-- Minimal floating theme toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-pressed="false" title="Toggle light/dark" onclick="toggleTheme()">🌙</button>
+
+  <footer>
+    <div class="wrap">© 2025 Vishesh Gupta</div>
+  </footer>
+
+  <script>
+    function copyBib(){
+      const el = document.getElementById('bib');
+      const range = document.createRange();
+      range.selectNode(el);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      try { document.execCommand('copy'); } catch(e){}
+      sel.removeAllRanges();
+    }
+    function pauseAll(){ document.querySelectorAll('video').forEach(v=>v.pause()); }
+    function playAll(){ document.querySelectorAll('video').forEach(v=>{ v.play().catch(()=>{}); }); }
+
+    // Minimal theme handling
+    const THEME_KEY = 'site-theme';
+    function applyTheme(theme){
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const isLight = theme === 'light';
+      if(isLight) root.setAttribute('data-theme','light'); else root.removeAttribute('data-theme');
+      if(btn){
+        btn.setAttribute('aria-pressed', String(isLight));
+        btn.textContent = isLight ? '☾' : '🌙'; // show opposite cue
+        btn.title = isLight ? 'Switch to dark' : 'Switch to light';
+      }
+    }
+    function getPreferredTheme(){
+      const saved = localStorage.getItem(THEME_KEY);
+      if(saved === 'light' || saved === 'dark') return saved;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    function toggleTheme(){
+      const next = (getPreferredTheme() === 'light') ? 'dark' : 'light';
+      localStorage.setItem(THEME_KEY, next);
+      applyTheme(next);
+    }
+    document.addEventListener('DOMContentLoaded', ()=>{
+      applyTheme(getPreferredTheme());
+      if(!localStorage.getItem(THEME_KEY) && window.matchMedia){
+        const mq = window.matchMedia('(prefers-color-scheme: light)');
+        mq.addEventListener('change', (e)=>applyTheme(e.matches ? 'light' : 'dark'));
+      }
+    });
+  </script>
+</body>
+</html>

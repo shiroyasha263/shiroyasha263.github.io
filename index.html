@@ -1,0 +1,216 @@
+<!doctype html>
+<!--
+Template inspired by aryan-satpathy.github.io (which itself uses Jon Barron's academic template).
+This file is a clean, dependency‑free starter without analytics. Swap images/links/text.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Academic Homepage</title>
+  <meta name="description" content="A minimal academic homepage template: bio, research, experience, news, publications, and projects." />
+  <style>
+    :root{
+      --bg: #ffffff;         /* Page background */
+      --text: #111;          /* Body text */
+      --muted: #555;         /* Secondary text */
+      --link: #1565c0;       /* Link color */
+      --rule: #e5e7eb;       /* Section divider */
+      --maxw: 800px;         /* Page width */
+      --thumb: 160px;        /* Thumbnail width */
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b0c10; --text:#e8e9ef; --muted:#a4a7b0; --link:#90c2ff; --rule:#23262f; }
+    }
+    html, body{ height: 100%; }
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 42px 16px 64px; }
+    h1{ font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin: 0 0 8px; text-align:center; font-weight: 500; }
+    .lead{ color: var(--muted); text-align:center; margin: 4px 0 16px; }
+    .links{ text-align:center; margin: 12px 0 0; }
+    .links a{ margin: 0 8px; }
+
+    /* Section headings */
+    h2{ font-size: 20px; margin: 28px 0 14px; padding-top: 8px; border-top: 1px solid var(--rule); font-weight: 400;}
+
+    /* Rows with left thumbnail and right description */
+    .row{ display:flex; gap: 16px; align-items:flex-start; margin: 10px 0 18px; }
+    .thumb{ flex: 0 0 var(--thumb); max-width: var(--thumb); }
+    .thumb img{ width: 100%; height: auto; display:block; border-radius: 6px; border:1px solid var(--rule); }
+    .thumb video{ width: 100%; height: auto; display:block; border-radius: 6px; border:1px solid var(--rule); }
+    .desc{ flex: 1 1 auto; }
+    .desc .title{ font-weight: 400; }
+    .desc .meta, .desc .note{ color: var(--muted); font-size: 12px; }
+
+    /* Simple list for news */
+    .news li{ margin: 6px 0; }
+
+    /* Small footer */
+    footer{ color: var(--muted); text-align:center; font-size: 13px; margin-top: 36px; }
+      /* Hero with profile */
+    .hero{ display:grid; grid-template-columns: 200px 1fr; align-items:center; gap: 18px; margin-bottom: 16px; }
+    .hero .pfp{ width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border:1px solid var(--rule); }
+    @media (max-width: 700px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero .pfp{ width: 128px; height: 128px; justify-self:center; }
+    }
+      /* Top-right theme button */
+    .theme-button{ position: fixed; top: 14px; right: 14px; z-index: 50; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: transparent; color: var(--text); cursor: pointer; }
+    .theme-button:hover{ background: rgba(127,127,127,.08); }
+
+    /* Attribute-based theme overrides */
+    [data-theme="dark"]{ --bg:#0b0c10; --text:#e8e9ef; --muted:#a4a7b0; --link:#90c2ff; --rule:#23262f; }
+    [data-theme="light"]{ --bg:#ffffff; --text:#0f172a; --muted:#5b6273; --link:#1f4de8; --rule:#e5e7eb; }
+  </style>
+</head>
+<body>
+  <button class="theme-button" id="themeBtn" aria-pressed="false" title="Toggle dark/light">Dark</button>
+  <main class="wrap">
+    <section class="hero">
+      <img class="pfp" src="./images/Profile.jpg" alt="Your Name portrait" />
+      <div>
+        <h1>Vishesh Gupta</h1>
+        <p>
+            I completed my Bachelors from <a href="#">Indian Institute of Technology, Kharagpur</a>, majoring in Electrical Engineering.In my undergrad years, I've had the opportunity to work with
+            <a href="https://profs.etsmtl.ca/agruson/">Dr. Adrien Gruson</a>, <a href="https://www.cse.iitd.ernet.in/~subodh/">Dr. Subodh Kumar</a> and <a href="https://www.iitkgp.ac.in/department/AT/faculty/at-kkntnu">Dr. Kaushal Kumar Bhagat</a>. At the end of my Bachelor studies, I also had the privilege of interning at <a href="https://people.mpi-inf.mpg.de/~gsingh/">Dr. Gurprit Singh's</a> Sampling and Rendering Group at <a href="https://www.mpi-inf.mpg.de/home/">MPI-Informatiks</a>.</p> 
+            
+            <p>Currently I am working with <a href="https://sonhua.github.io/">Dr. Binh-Son Hua</a> on <em>generative rendering</em> - utilizing the broad pixel-space knowledge of 2D image-based diffusion models and applying them to accelerate and control our 3D image renderers.
+        </p>
+        <p class="links"><a href="mailto:guptavishesh263@gmail.com">Email</a> · <a href="https://github.com/shiroyasha263/">Github</a> · <a href="https://www.linkedin.com/in/vishesh-gupta-5928b3216/">LinkedIn</a> · <a href="#">Resume</a></p>
+      </div>
+    </section>
+
+    <!-- Research interests -->
+    <h2 id="research">Research</h2>
+    <p>My research interests include, but are not limited to generative rendering, physically-based (differentiable) rendering, inverse (graphics) problems and AI aided design. I am interested in developing numerical and optimization methods to simulate and engineer optical properties of lenses for applications in imaging and computational photography.</p>
+    
+    <!-- News -->
+    <h2 id="news">News</h2>
+    <ul class="news">
+      <li>[Oct 2025] Research Internship with <a href="https://sonhua.github.io/">Dr. Binh-Son Hua</a> at <a href="https://www.tcd.ie/">Trinity College Dublin</a>.</li>
+      <li>[Sep 2024] Research Internship with <a href="https://people.mpi-inf.mpg.de/~gsingh/">Dr. Gurprit Singh</a> at <a href="https://www.mpi-inf.mpg.de/home/">MPI-INF</a>.</li>
+    </ul>
+
+    <!-- Publications -->
+    <!-- <h2 id="publications">Publications</h2>
+
+    <div class="row">
+      <div class="thumb"><video autoplay loop muted><source src="./VideoGen/Results/sample-10-7-5-3---4.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+      <div class="desc">
+        <div class="title">Noise Space Manipulation for Video Generation</div>
+        <div class="meta"><strong>Vishesh Gupta</strong>, Jente Vandersanden, Gurprit Singh • MPI-INF Internship Report 2025</div>
+        <p class="note">1–2 line plain‑English summary of what the work achieves.</p>
+        <p><a href="./VideoGen/Results/Report_MPI-1.pdf">paper</a> / <a href="./VideoGen/VideoGen.html">project page</a></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="thumb"><img src="./images/GDRSLC - 64 spp - Cornell Box - 620s.png" alt="Paper thumbnail" /></div>
+      <div class="desc">
+        <div class="title">Gradient Domain Rendering with Novel Shift Mapping</div>
+        <div class="meta">Vishesh Gupta, Adrien Gruson • MITACS Internship Report 2023</div>
+        <p class="note">Short highlight sentence for this paper.</p>
+        <p><a href="#">paper</a> / <a href="#">code</a></p>
+      </div>
+    </div> -->
+
+    <!-- Projects -->
+    <h2 id="projects">Projects</h2>
+
+    <div class="row">
+      <div class="thumb"><video autoplay loop muted><source src="./VideoGen/Results/sample-10-7-5-3---4.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+      <div class="desc">
+        <div class="title">Noise Space Manipulation for Video Generation</div>
+        <div class="meta"><strong>Vishesh Gupta</strong>, <a href="https://www.jentevandersanden.com/">Jente Vandersanden</a>, <a href="https://people.mpi-inf.mpg.de/~gsingh/">Gurprit Singh</a>, <a href="https://people.mpi-inf.mpg.de/~hpseidel/">Hans-Peter Siedel</a> • <a href="https://www.mpi-inf.mpg.de/home/">MPI-INF</a> Internship Report • 2024 - 2025</div>
+        <p class="note">We explore noise-space manipulation in generative modelling and use it as a light weight alternative for video generation, enabling temporally coherent generation via frozen image models.</p>
+        <p><a href="./VideoGen/Results/Report_MPI-1.pdf">paper</a> / <a href="./VideoGen/VideoGen.html">project page</a></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="thumb"><img src="./images/Scene1.png" alt="Project thumbnail" /></div>
+      <div class="desc">
+        <div class="title">Optix Path Tracer</div>
+        <div class="meta">Self project • 2024</div>
+        <p class="note">Implemented the optix pipeline for path tracing using the slangD shader language.</p>
+        <p><a href="https://github.com/shiroyasha263/Optix-Attempt">code</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="thumb"><img src="./images/GDRSLC - 64 spp - Cornell Box - 620s.png" alt="Paper thumbnail" /></div>
+      <div class="desc">
+        <div class="title">Gradient Domain Rendering with Novel Shift Mapping</div>
+        <div class="meta"><strong>Vishesh Gupta</strong>, <a href="https://profs.etsmtl.ca/agruson/">Adrien Gruson</a> • MITACS Internship Report 2023</div>
+        <p class="note">Implementation of a novel shift mapping technique, using stochastic lightcuts for correlated light cluster sampling to generate a gradient image.</p>
+        <p><a href="./Data/Scalable_Gradient_Domain_Rendering_Report.pdf">paper</a> / <a href="https://github.com/shiroyasha263/Gradient-Domain-Rendering">code</a></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="thumb"><img src="./images/canvas.png" alt="Project thumbnail" /></div>
+      <div class="desc">
+        <div class="title">Ray Tracing in One Weekend</div>
+        <div class="meta">Self Project • 2022</div>
+        <p class="note">Project following the Ray-Tracer-In-One-Weekend series.</p>
+        <p><a href="https://github.com/shiroyasha263/Ray-Tracer-In-One-Weekend">code</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="thumb"><img src="./images/SiliconWaferFabMachine.jpg" alt="Project thumbnail" /></div>
+      <div class="desc">
+        <div class="title">Virtual Labratory - Silicon Wafer Fab Machine</div>
+        <div class="meta"><strong>Vishesh Gupta</strong>, <a href="https://www.iitkgp.ac.in/department/AT/faculty/at-kkntnu">Kaushal Kumar Bhagat</a> • Internship • 2022</div>
+        <p class="note">Virtual Training Simulation of a silicon wafer fabrication machine to addresses cost constraints, enabling large-scale user training without direct exposure to expensive equipment.</p>
+        <p><a href="https://www.youtube.com/watch?v=oAgPavAKCRE">video</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">Template inspired by Jon Barron’s academic site</div>
+  </footer>
+  <script>
+    const THEME_KEY = 'site-theme';
+    function applyTheme(theme){
+      const root = document.documentElement;
+      if(theme === 'dark') root.setAttribute('data-theme','dark');
+      else if(theme === 'light') root.setAttribute('data-theme','light');
+      else root.removeAttribute('data-theme');
+      const btn = document.getElementById('themeBtn');
+      if(btn){
+        const isDark = theme === 'dark';
+        btn.textContent = isDark ? 'Light' : 'Dark';
+        btn.setAttribute('aria-pressed', String(isDark));
+        btn.title = isDark ? 'Switch to light' : 'Switch to dark';
+      }
+    }
+    function getPreferredTheme(){
+      const saved = localStorage.getItem(THEME_KEY);
+      if(saved === 'dark' || saved === 'light') return saved;
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    function toggleTheme(){
+      const next = (getPreferredTheme() === 'dark') ? 'light' : 'dark';
+      localStorage.setItem(THEME_KEY, next);
+      applyTheme(next);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      applyTheme(getPreferredTheme());
+      const btn = document.getElementById('themeBtn');
+      if(btn) btn.addEventListener('click', toggleTheme);
+      if(!localStorage.getItem(THEME_KEY) && window.matchMedia){
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        mq.addEventListener('change', e => applyTheme(e.matches ? 'dark' : 'light'));
+      }
+    });
+  </script>
+</body>
+</html>
